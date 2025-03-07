@@ -1,0 +1,26 @@
+name: 'maelstrom-go-test'
+description: 'Install and configure maelstrom-go-test'
+branding:
+  icon: check-circle
+  color: blue
+runs:
+  using: "composite"
+  steps:
+  # This installs the latest maelstrom-go-test image from GitHub.
+  - name: Install maelstrom-go-test
+    uses: jaxxstorm/action-install-gh-release@master
+    with:
+      repo: maelstrom-software/maelstrom
+      asset-name: maelstrom-go-test
+
+  # This sets some environment variables for maelstrom-go-test.
+  - name: Set Environment Variables for maelstrom-go-test.
+    run: |
+      echo "MAELSTROM_GO_TEST_BROKER=localhost:$MAELSTROM_BROKER_PORT" >> "$GITHUB_ENV"
+      echo "MAELSTROM_GO_TEST_ARTIFACT_TRANSFER_STRATEGY=github" >> "$GITHUB_ENV"
+    shell: bash
+
+  # This is necessary to run Maelstrom on recent versions of Ubuntu.
+  - name: Disable Apparmor Container Restrictions for Maelstrom
+    run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+    shell: bash
