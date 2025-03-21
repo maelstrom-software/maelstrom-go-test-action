@@ -12,12 +12,15 @@ runs:
     with:
       repo: maelstrom-software/maelstrom
       asset-name: maelstrom-go-test
+      tag: v0.14.0
+      cache: enable
 
   # This sets some environment variables for maelstrom-go-test.
   - name: Set Environment Variables for maelstrom-go-test.
     run: |
-      echo "MAELSTROM_GO_TEST_BROKER=localhost:$MAELSTROM_BROKER_PORT" >> "$GITHUB_ENV"
-      echo "MAELSTROM_GO_TEST_ARTIFACT_TRANSFER_STRATEGY=github" >> "$GITHUB_ENV"
+      echo "MAELSTROM_CLUSTER_COMMUNICATION_STRATEGY=github" >> "$GITHUB_ENV"
+      echo "MAELSTROM_GITHUB_ACTIONS_TOKEN=${{ env.ACTIONS_RUNTIME_TOKEN }}" >> "$GITHUB_ENV"
+      echo "MAELSTROM_GITHUB_ACTIONS_URL=${{ env.ACTIONS_RESULTS_URL }}" >> "$GITHUB_ENV"
     shell: bash
 
   # This is necessary to run Maelstrom on recent versions of Ubuntu.
