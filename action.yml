@@ -13,7 +13,7 @@ runs:
 
   # This installs the latest maelstrom-go-test image from GitHub.
   - name: Install maelstrom-go-test
-    uses: jaxxstorm/action-install-gh-release@latest
+    uses: jaxxstorm/action-install-gh-release@master
     with:
       repo: maelstrom-software/maelstrom
       asset-name: maelstrom-go-test
