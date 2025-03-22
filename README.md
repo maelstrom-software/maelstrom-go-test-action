@@ -4,6 +4,7 @@
 
 This GitHub action installs and configures `maelstrom-go-test`, the Maelstrom
 test runner for [Go](https://go.dev).
+
 [Maelstrom](https://github.com/maelstrom-software/maelstrom) is a suite of
 tools for running tests in isolated micro-containers locally on your machine or
 distributed across arbitrarily large clusters. Maelstrom currently has test
